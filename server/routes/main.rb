@@ -18,7 +18,7 @@ class MainApp
     elsif request.path.start_with?('/static')
       halt 404
     else
-      send_file '../static/index.html'
+      send_file './static/index.html'
     end
   end
 

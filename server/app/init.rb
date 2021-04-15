@@ -3,7 +3,7 @@ require 'logger'
 require 'English'
 require 'pp' if development?
 
-ROOT = File.join(File.dirname(__FILE__), '..')
+ROOT = File.join(File.realpath(__dir__), '../..')
 ENV['RACK_ENV'] ||= 'development'
 
 require_relative './util'

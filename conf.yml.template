@@ -1,8 +1,7 @@
 # Application settings
 app:
-  name: 'my platform'
+  name: 'tools'
   debug: true
-  genius_access_token: 'xxxxxxx'
 
 # Server settings
 server:
@@ -11,7 +10,7 @@ server:
 # Session Settings
 session:
   # cookie key
-  name: ibs
+  name: tools_sid
 
 # Log settings
 log:
@@ -19,4 +18,3 @@ log:
   access: deploy/log/access.log
   app: deploy/log/app.log
   error: deploy/log/error.log
-  db: deploy/log/sql.log

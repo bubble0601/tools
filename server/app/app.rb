@@ -10,7 +10,7 @@ class MainApp < Sinatra::Base
   end
 
   set :root, ROOT
-  set :public_folder, '../static'
+  set :public_folder, './static'
 
   # expires_after must be less than 2592000(=30days)
   # expires_after controls the expiration of both the cookie and the memcached

@@ -32,7 +32,7 @@ stop)
   fi
   pid=$(cat "$PIDFILE")
   echo "killing pid=$pid"
-  kill $pid
+  kill -QUIT $pid
   ;;
 restart)
   if ! [ -e "$PIDFILE" ];then
@@ -41,11 +41,7 @@ restart)
   fi
   pid=$(cat "$PIDFILE")
   echo "killing pid=$pid"
-  kill $pid
-  if [ $# -ge 2 ]; then
-    bundle exec unicorn -E production -c deploy/unicorn.rb -l $2 -D && echo "unicorn started"
-  else
-    bundle exec unicorn -E production -c deploy/unicorn.rb -D && echo "unicorn started"
-  fi
+  kill -USR2 $pid
+  echo "unicorn restarted"
   ;;
 esac
