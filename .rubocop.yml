@@ -1,0 +1,63 @@
+AllCops:
+  NewCops: enable
+
+Layout/FirstHashElementIndentation:
+  EnforcedStyle: consistent
+Layout/LineLength:
+  Max: 150
+Layout/SpaceBeforeBlockBraces:
+  EnforcedStyle: no_space
+
+Lint/UnderscorePrefixedVariableName:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+Metrics/CyclomaticComplexity:
+  Enabled: false
+Metrics/PerceivedComplexity:
+  Enabled: false
+Metrics/ClassLength:
+  Enabled: false
+Metrics/ModuleLength:
+  Enabled: false
+Metrics/MethodLength:
+  Enabled: false
+Metrics/BlockLength:
+  Enabled: false
+
+Naming/MethodParameterName:
+  MinNameLength: 2
+
+Style/AsciiComments:
+  Enabled: false
+Style/ConditionalAssignment:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+Style/FormatString:
+  Enabled: false
+Style/FormatStringToken:
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/GuardClause:
+  Enabled: false
+Style/IfUnlessModifier:
+  Enabled: false
+Style/MethodCallWithArgsParentheses:
+  IgnoredMethods: ['require', 'p', 'puts', 'print']
+Style/NumericLiterals:
+  MinDigits: 7
+Style/NumericPredicate:
+  Enabled: false
+Style/RedundantSelf:
+  Enabled: false
+Style/RescueModifier:
+  Enabled: false
+Style/Semicolon:
+  AllowAsExpressionSeparator: true
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: consistent_comma
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: consistent_comma

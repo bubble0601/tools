@@ -1,0 +1,22 @@
+# Application settings
+app:
+  name: 'my platform'
+  debug: true
+  genius_access_token: 'xxxxxxx'
+
+# Server settings
+server:
+  ssl: false
+
+# Session Settings
+session:
+  # cookie key
+  name: ibs
+
+# Log settings
+log:
+  # output files
+  access: deploy/log/access.log
+  app: deploy/log/app.log
+  error: deploy/log/error.log
+  db: deploy/log/sql.log
