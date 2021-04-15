@@ -61,7 +61,7 @@
             </v-card-text>
             <v-card-actions class="justify-end">
               <span v-if="status === 'downloading'" class="subtitle-1 text--secondary mr-4">
-                お待ち下さい(見込み時間:約{{ Math.floor(length / 20 / 60) }}分)...
+                お待ち下さい(所要時間見込み:約{{ Math.floor(length / 1200) }}分)...
               </span>
               <v-btn color="primary" :loading="status === 'downloading'" :disabled="status === 'downloading'" @click="download">
                 ダウンロード
@@ -77,7 +77,8 @@
             注意事項
           </v-card-title>
           <v-card-text>
-            ・このツールを利用することにより生じた損害について、作者は一切の責任を負わないものとします。
+            <p>・このツールを利用することにより生じた損害について、作者は一切の責任を負わないものとします。</p>
+            <p>・サイズや所要時間は目安であり、内容や環境によっては大きな誤差がある場合がございます</p>
           </v-card-text>
         </v-card>
       </div>
