@@ -13,13 +13,7 @@ class MainApp
 
   # Sinatra will check if a static file exists in public folder and serve it before checking for a matching route.
   not_found do
-    if @is_api
-      return
-    elsif request.path.start_with?('/static')
-      halt 404
-    else
-      send_file './static/index.html'
-    end
+    send_file './static/index.html' unless request.path.start_with?('/api')
   end
 
   error 500 do

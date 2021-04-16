@@ -63,6 +63,15 @@ class MainApp
         cmd.push(dist)
         system(*cmd, exception: true)
       end
+
+      def remove_file(path, timeout)
+        raise ArgumentError unless timeout.is_a? Numeric
+        raise ArgumentError if timeout < 0 || timeout > 24 * 3600
+        return unless File.exist?(path)
+
+        escaped_path = path.shellescape
+        spawn "sleep #{timeout} && rm #{escaped_path}"
+      end
     end
 
     get '/fetchinfo' do
@@ -79,16 +88,22 @@ class MainApp
       halt 400 unless params[:vid]
 
       ext = 'mp4'
-      filename = "/tmp/#{timestamp2}-#{params[:vid]}"
-      download(params[:m3u8], "#{filename}.raw.#{ext}")
+      filepath = "/tmp/#{timestamp2}-#{params[:vid]}"
+      download(params[:m3u8], "#{filepath}.raw.#{ext}")
 
       s = params[:start].to_i
       e = params[:end].to_i
       start_t = s == -1 ? nil : s
       end_t = e == -1 ? nil : e
-      cut_video("#{filename}.raw.#{ext}", "#{filename}.#{ext}", start_t, end_t)
+      if start_t || end_t
+        cut_video("#{filepath}.raw.#{ext}", "#{filepath}.#{ext}", start_t, end_t)
+        send_file "#{filepath}.#{ext}", type: ext.to_sym
+      else
+        send_file "#{filepath}.raw.#{ext}", type: ext.to_sym
+      end
 
-      send_file "#{filename}.#{ext}", type: ext.to_sym
+      remove_file("#{filepath}.raw.#{ext}", 3600)
+      remove_file("#{filepath}.#{ext}", 3600)
     end
   end
 end
